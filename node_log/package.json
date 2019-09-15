@@ -1,0 +1,19 @@
+{
+  "name": "node_log",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "ajax-request": "^1.2.3",
+    "express": "^4.16.4",
+    "gmail-send": "^1.2.14",
+    "http": "0.0.0",
+    "node-fetch": "^2.3.0"
+  }
+}

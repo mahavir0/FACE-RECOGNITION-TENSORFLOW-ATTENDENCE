@@ -1,0 +1,40 @@
+REST CALL
+API CALL : PROTOCOL://IPADDRESS:PORT/URL/YEAR/MONTH/DATE
+            http://192.168.137.1:5000/attendenceBy/2019/02/15
+
+OUTPUT : 
+{  
+   "data":[  
+      [  
+         51,
+         0
+      ],
+      [  
+         26,
+         0
+      ],
+      [  
+         46,
+         0
+      ],
+      [  
+         50,
+         0
+      ]
+   ]
+}
+
+
+
+API CALL : PROTOCOL://IPADDRESS:PORT/URL/MONTH
+            http://192.168.137.1:5000/attendenceByMonth/02
+
+OUTPUT : 
+{  
+   "26":18,
+   "46":20,
+   "50":15,
+   "51":20
+}
+
+

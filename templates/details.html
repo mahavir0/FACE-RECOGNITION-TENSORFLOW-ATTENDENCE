@@ -1,0 +1,494 @@
+{% include "header.html" %}
+<body>
+  <div class="container-scroller">
+    {% include "navbar.html" %}
+    <div class="container-fluid page-body-wrapper">
+      {% include "slidebar.html" %}
+
+<!-- partial -->
+<div class="main-panel">
+        <div class="content-wrapper">
+          <div class="page-header">
+            <h3 class="page-title">
+              Generate Reports
+            </h3>
+          </div>
+          <div class="row">
+            <div class="col-lg-12 grid-margin stretch-card">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="form-group">
+                            <label for="exampleSelectGender">Select Report Format</label><br />
+                            <div style="display: flex; flex-direction: row;">
+                                <div class="col-lg-3">
+                                    <input type="text" class="form-control" id="enrollmentx" placeholder="Enrollment No.">
+                                </div>
+                                <div class="col-lg-3">
+                                    <input type="text" class="form-control" id="datex" placeholder="Date">
+                                </div>
+                            <div class="col-lg-2">
+                                <input type="text" class="form-control" id="monthx" placeholder="Month">
+                            </div>
+                            <div class="col-lg-2">
+                                <input type="text" class="form-control" id="coursex" placeholder="Course Id">
+                            </div>
+                            <div class="col-lg-2">
+                                <button type="button" class="form-control" onclick="search();">Search</button>
+                            </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-12 grid-margin stretch-card">
+                            <div class="card">
+                              <div class="card-body">
+                                <table class="table table-hover" id="mytable">
+                                  <thead>
+                                    <tr>
+                                      <th>Course Id</th>
+                                      <th>Enrollment No</th>
+                                      <th>Date</th>
+                                      <th>Status</th>
+                                    </tr>
+                                  </thead>
+                                  <tbody>
+                                  </tbody>
+                                </table>
+                              </div>
+                            </div>
+                          </div>
+                            <div class="form-group">
+                                <label for="exampleSelectGender">Select Report Format</label><br />
+                                    <button type="button" class="btn btn-gradient-primary btn-fw" data-toggle="modal" data-target="#byMonthDiv">Get by Month </button>
+                                    <button type="button" class="btn btn-gradient-primary btn-fw" data-toggle="modal" data-target="#byDateDiv">Get by Date </button>
+                                    <button type="button" class="btn btn-gradient-primary btn-fw" data-toggle="modal" data-target="#byCourseDiv">Get by Course </button>
+                                    <button type="button" class="btn btn-gradient-primary btn-fw" data-toggle="modal" data-target="#byEnrollmentDiv">Get by Enrollment No </button>
+                                    <button type="button" class="btn btn-gradient-primary btn-fw" data-toggle="modal" data-target="#byCourseDateDiv">Get by Course and Date </button><br /><br />
+                                    <button type="button" class="btn btn-gradient-primary btn-fw" data-toggle="modal" data-target="#byCourseMonthDiv">Get by Course and Month</button>
+                                    <button type="button" class="btn btn-gradient-primary btn-fw" data-toggle="modal" data-target="#byEnrollmentMonthDiv">Get by Enrollment No and Month </button>
+                                    <button type="button" class="btn btn-gradient-primary btn-fw" data-toggle="modal" data-target="#byEnrollmentDateDiv">Get by Enrollment No and Date </button><br /><br />
+                                    <button type="button" class="btn btn-gradient-primary btn-fw" data-toggle="modal" data-target="#byCourseEnrollmentMonthDiv">Get by Course, Enrollment and Month</button>
+                            </div>
+                    </div>
+                </div>
+            </div>
+          </div>
+        <!-- Modal -->
+<div id="byMonthDiv" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+      
+          <!-- Modal content-->
+          <div class="modal-content">
+            <div class="modal-header">
+                    <h4 class="modal-title">Modal Header</h4>
+              <button type="button" class="close" data-dismiss="modal">&times;</button>
+              
+            </div>
+            <div class="modal-body">
+                    <form class="forms-sample">
+                            <div class="form-group">
+                              <label for="bymonth">Month</label>
+                              <input type="text" class="form-control" id="bymonth" placeholder="Month <mm>">
+                            </div>
+                            <button type="button" class="btn btn-gradient-primary mr-2" onclick="byMonth()">Submit</button>
+                            <button class="btn btn-light">Cancel</button>
+                          </form>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+          </div>
+      
+        </div>
+      </div>
+      <script>
+          function byMonth() {
+              console.log("call");
+              var val = document.getElementById('bymonth').value;
+              window.location.href = '/attendenceByMonth/'+val;
+          }
+      </script>
+
+<!--By Date-->
+<div id="byDateDiv" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+      
+          <!-- Modal content-->
+          <div class="modal-content">
+            <div class="modal-header">
+                    <h4 class="modal-title">Modal Header</h4>
+              <button type="button" class="close" data-dismiss="modal">&times;</button>
+              
+            </div>
+            <div class="modal-body">
+                    <form class="forms-sample">
+                            <div class="form-group">
+                              <label for="bydate">Date</label>
+                              <input type="date" class="form-control" id="bydate" placeholder="Date <dd>">
+                            </div>
+                            <button type="button" class="btn btn-gradient-primary mr-2" onclick="byDate()">Submit</button>
+                            <button class="btn btn-light">Cancel</button>
+                          </form>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+          </div>
+      
+        </div>
+      </div>
+      <script>
+          function byDate() {
+              console.log("call");
+              var val = document.getElementById('bydate').value;
+              window.location.href = '/attendenceByDate/'+val;
+          }
+      </script>
+
+<!--By Course-->
+<div id="byCourseDiv" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+      
+          <!-- Modal content-->
+          <div class="modal-content">
+            <div class="modal-header">
+                    <h4 class="modal-title">Modal Header</h4>
+              <button type="button" class="close" data-dismiss="modal">&times;</button>
+              
+            </div>
+            <div class="modal-body">
+                    <form class="forms-sample">
+                            <div class="form-group">
+                                <label for="selectcourse">Select Course</label>
+                                <select class="form-control" id="bycourse" name="courseId">
+                                    <option>Select Course</option>
+                                    {% for course in courses %}
+                                        <option value="{{course}}">{{course}}</option>
+                                    {% endfor %}
+                                </select>
+                                </div>
+                            <button type="button" class="btn btn-gradient-primary mr-2" onclick="byCourse()">Submit</button>
+                            <button class="btn btn-light">Cancel</button>
+                          </form>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+          </div>
+      
+        </div>
+      </div>
+      <script>
+          function byCourse() {
+              console.log("call");
+              var val = document.getElementById('bycourse').value;
+              window.location.href = '/attendenceByCourse/'+val;
+          }
+      </script>
+
+<!--By Enrollment No-->
+<div id="byEnrollmentDiv" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+      
+          <!-- Modal content-->
+          <div class="modal-content">
+            <div class="modal-header">
+                    <h4 class="modal-title">Modal Header</h4>
+              <button type="button" class="close" data-dismiss="modal">&times;</button>
+              
+            </div>
+            <div class="modal-body">
+                    <form class="forms-sample">
+                            <div class="form-group">
+                                    <label for="enrollmentNo">Student Id.</label>
+                                    <select class="form-control" id="byenrollment" name="enrollmentNo">
+                                        <option>Student Id.</option>
+                                        {% for id in ids %}
+                                          <option value="{{id}}">{{id}}</option>
+                                        {% endfor %}
+                                    </select>
+                                  </div>
+                            <button type="button" class="btn btn-gradient-primary mr-2" onclick="byEnrollment()">Submit</button>
+                            <button class="btn btn-light">Cancel</button>
+                          </form>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+          </div>
+      
+        </div>
+      </div>
+      <script>
+          function byEnrollment() {
+              console.log("call");
+              var val = document.getElementById('byenrollment').value;
+              window.location.href = '/attendenceByEnrollment/'+val;
+          }
+      </script>
+
+
+<!--By Course Date No-->
+<div id="byCourseDateDiv" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+      
+          <!-- Modal content-->
+          <div class="modal-content">
+            <div class="modal-header">
+                    <h4 class="modal-title">Modal Header</h4>
+              <button type="button" class="close" data-dismiss="modal">&times;</button>
+              
+            </div>
+            <div class="modal-body">
+                    <form class="forms-sample">
+                            <div class="form-group">
+                                    <label for="selectcourse">Select Course</label>
+                                    <select class="form-control" id="bycourse1" name="courseId">
+                                        <option>Select Course</option>
+                                        {% for course in courses %}
+                                            <option value="{{course}}">{{course}}</option>
+                                        {% endfor %}
+                                    </select>
+                                    </div>
+                            <div class="form-group">
+                                    <label for="bycoursedate">Date</label>
+                                    <input type="date" class="form-control" id="bydate1" placeholder="Date <yyyy-mm-dd>">
+                                  </div>
+                            <button type="button" class="btn btn-gradient-primary mr-2" onclick="byCourseDate()">Submit</button>
+                            <button class="btn btn-light">Cancel</button>
+                          </form>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+          </div>
+      
+        </div>
+      </div>
+      <script>
+          function byCourseDate() {
+              console.log("call");
+              var val = document.getElementById('bycourse1').value;
+              var val1 = document.getElementById('bydate1').value;
+              window.location.href = '/attendenceByCourseDate/'+val+'/'+val1;
+          }
+      </script>
+
+
+<!--By Course Month No-->
+<div id="byCourseMonthDiv" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+      
+          <!-- Modal content-->
+          <div class="modal-content">
+            <div class="modal-header">
+                    <h4 class="modal-title">Modal Header</h4>
+              <button type="button" class="close" data-dismiss="modal">&times;</button>
+              
+            </div>
+            <div class="modal-body">
+                    <form class="forms-sample">
+                            <div class="form-group">
+                                    <label for="selectcourse">Select Course</label>
+                                    <select class="form-control" id="bycourse2" name="courseId">
+                                        <option>Select Course</option>
+                                        {% for course in courses %}
+                                            <option value="{{course}}">{{course}}</option>
+                                        {% endfor %}
+                                    </select>
+                                    </div>
+                            <div class="form-group">
+                                    <label for="bymonth1">Month</label>
+                                    <input type="text" class="form-control" id="bymonth1" placeholder="Month <mm>">
+                                  </div>
+                            <button type="button" class="btn btn-gradient-primary mr-2" onclick="byCourseMonth()">Submit</button>
+                            <button class="btn btn-light">Cancel</button>
+                          </form>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+          </div>
+      
+        </div>
+      </div>
+      <script>
+          function byCourseMonth() {
+              console.log("call");
+              var val = document.getElementById('bycourse2').value;
+              var val1 = document.getElementById('bymonth1').value;
+              window.location.href = '/attendenceByCourseMonth/'+val+'/'+val1;
+          }
+      </script>
+
+
+<!--By Enrollment Month No-->
+<div id="byEnrollmentMonthDiv" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+      
+          <!-- Modal content-->
+          <div class="modal-content">
+            <div class="modal-header">
+                    <h4 class="modal-title">Modal Header</h4>
+              <button type="button" class="close" data-dismiss="modal">&times;</button>
+              
+            </div>
+            <div class="modal-body">
+                    <form class="forms-sample">
+                            <div class="form-group">
+                                    <label for="enrollmentNo">Student Id.</label>
+                                    <select class="form-control" id="byenrollment1" name="enrollmentNo">
+                                        <option>Student Id.</option>
+                                        {% for id in ids %}
+                                          <option value="{{id}}">{{id}}</option>
+                                        {% endfor %}
+                                    </select>
+                                  </div>
+                            <div class="form-group">
+                                    <label for="byenrollmentmonth">Month</label>
+                                    <input type="text" class="form-control" id="bymonth2" placeholder="Month <mm>">
+                                  </div>
+                            <button type="button" class="btn btn-gradient-primary mr-2" onclick="byEnrollmentMonth()">Submit</button>
+                            <button class="btn btn-light">Cancel</button>
+                          </form>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+          </div>
+      
+        </div>
+      </div>
+      <script>
+          function byEnrollmentMonth() {
+              console.log("call");
+              var val = document.getElementById('byenrollment1').value;
+              var val1 = document.getElementById('bymonth2').value;
+              window.location.href = '/attendenceByEnrollmentMonth/'+val+'/'+val1;
+          }
+      </script>
+
+      
+<!--By Enrollment Date No-->
+<div id="byEnrollmentDateDiv" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+      
+          <!-- Modal content-->
+          <div class="modal-content">
+            <div class="modal-header">
+                    <h4 class="modal-title">Modal Header</h4>
+              <button type="button" class="close" data-dismiss="modal">&times;</button>
+              
+            </div>
+            <div class="modal-body">
+                    <form class="forms-sample">
+                            <div class="form-group">
+                                    <label for="enrollmentNo">Student Id.</label>
+                                    <select class="form-control" id="byenrollment2" name="enrollmentNo">
+                                        <option>Student Id.</option>
+                                        {% for id in ids %}
+                                          <option value="{{id}}">{{id}}</option>
+                                        {% endfor %}
+                                    </select>
+                                  </div>
+                            <div class="form-group">
+                                    <label for="bydate3">Date</label>
+                                    <input type="date" class="form-control" id="bydate3" placeholder="date <yyyy-mm-dd>">
+                                  </div>
+                            <button type="button" class="btn btn-gradient-primary mr-2" onclick="byEnrollmentDate()">Submit</button>
+                            <button class="btn btn-light">Cancel</button>
+                          </form>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+          </div>
+      
+        </div>
+      </div>
+      <script>
+          function byEnrollmentDate() {
+              console.log("call");
+              var val = document.getElementById('byenrollment2').value;
+              var val1 = document.getElementById('bydate3').value;
+              window.location.href = '/attendenceByEnrollmentDate/'+val+'/'+val1;
+          }
+      </script>
+
+      
+<!--By Course Enrollment Month No-->
+<div id="byCourseEnrollmentMonthDiv" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+      
+          <!-- Modal content-->
+          <div class="modal-content">
+            <div class="modal-header">
+                    <h4 class="modal-title">Modal Header</h4>
+              <button type="button" class="close" data-dismiss="modal">&times;</button>
+              
+            </div>
+            <div class="modal-body">
+                <form class="forms-sample">
+                        <div class="form-group">
+                                <label for="selectcourse">Select Course</label>
+                                <select class="form-control" id="bycourse5" name="courseId">
+                                    <option>Select Course</option>
+                                    {% for course in courses %}
+                                        <option value="{{course}}">{{course}}</option>
+                                    {% endfor %}
+                                </select>
+                                </div>
+                                <div class="form-group">
+                                        <label for="enrollmentNo">Student Id.</label>
+                                        <select class="form-control" id="byenrollment5" name="enrollmentNo">
+                                            <option>Student Id.</option>
+                                            {% for id in ids %}
+                                              <option value="{{id}}">{{id}}</option>
+                                            {% endfor %}
+                                        </select>
+                                      </div>
+                        <div class="form-group">
+                            <label for="bymonth5">Month</label>
+                            <input type="text" class="form-control" id="bymonth5" placeholder="Month <mm>">
+                        </div>
+                        <button type="button" class="btn btn-gradient-primary mr-2" onclick="byCourseEnrollmentMonth()">Submit</button>
+                        <button class="btn btn-light">Cancel</button>
+                </form>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+          </div>
+      
+        </div>
+      </div>
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+      <script>
+          function byCourseEnrollmentMonth() {
+              console.log("call");
+              var val = document.getElementById('bycourse5').value;
+              var val1 = document.getElementById('byenrollment5').value;
+              var val2 = document.getElementById('bymonth5').value;
+              window.location.href = '/attendenceByCourseEnrollmentMonth/'+val+'/'+val1+'/'+val2;
+          }
+          function search() {
+            var enrollmentNo = document.getElementById('enrollmentx').value;
+            var month = document.getElementById('monthx').value;
+            var date = document.getElementById('datex').value;
+            var courseId = document.getElementById('coursex').value;
+            var url = "http://192.168.137.1:5000/ajax/"+(enrollmentNo||'%')+"/"+(month||'%')+'/'+(date||'%')+'/'+(courseId||'%');
+              $.get(url, function(data, status){
+                console.log(data);
+                var table = document.getElementById('mytable');
+                for(var i=0; i<data.result.length;i++) {
+                  table.innerHTML = table.innerHTML + `<tr>
+                    <td>`+data['result'][i][0]+`</td>
+                    <td>`+data['result'][i][1]+`</td>
+                    <td>`+data['result'][i][2]+`</td>
+                    <td><label class="badge badge-danger">`+data['result'][i][3]+`</label></td>
+                  </tr>`;
+                }
+                  
+              });
+          }
+      </script>
+      
+{% include "footer.html" %}

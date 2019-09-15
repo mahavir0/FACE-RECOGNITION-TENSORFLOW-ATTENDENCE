@@ -1,0 +1,295 @@
+ <nav class="sidebar sidebar-offcanvas" id="sidebar">
+        <ul class="nav">
+          <li class="nav-item active">
+            <a class="nav-link " data-toggle="modal" data-target="#addstudent">
+              <span class="menu-title">Add Student</span>
+              <i class="mdi mdi-plus menu-icon"></i>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" data-toggle="modal" data-target="#addcourse">
+              <span class="menu-title">Add Course</span>
+              <i class="mdi mdi-plus menu-icon"></i>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" data-toggle="modal" data-target="#addstudentincourse">
+              <span class="menu-title">Add Student in Course</span>
+              <i class="mdi mdi-plus menu-icon"></i>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" data-toggle="modal" data-target="#processvideo">
+              <span class="menu-title">Take Attendence by Video</span>
+              <i class="mdi mdi-account-check menu-icon"></i>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" data-toggle="modal" data-target="#processimage">
+              <span class="menu-title">Take Attendence by Image</span>
+              <i class="mdi mdi-account-check menu-icon"></i>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/details">
+              <span class="menu-title">Details</span>
+              <i class=" mdi mdi-account-card-details  menu-icon"></i>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/mail">
+              <span class="menu-title">Send Mail</span>
+              <i class="mdi mdi-email menu-icon"></i>
+            </a>
+          </li>
+        </ul>
+      </nav>
+      <!-- Modal -->
+<div id="addstudent" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title">Add Student</h4>
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+      </div>
+      <div class="modal-body">
+        
+        <div class="col-12 grid-margin stretch-card">
+          <div class="card">
+            <div class="card-body">
+              <h4 class="card-title">Enter Details of student</h4>
+              <form class="forms-sample" action="addStudentBack" method="POST" enctype="multipart/form-data">
+                <div class="form-group">
+                  <label for="enrollmentNo">Enrollment No.</label>
+                  <input type="text" class="form-control" name="enrollmentNo" id="enrollmentNo" placeholder="Enrollment No.">
+                </div>
+                <div class="form-group">
+                  <label for="studentName">Name</label>
+                  <input type="text" class="form-control" name="studentName" id="studentName" placeholder="Name">
+                </div>
+                <div class="form-group">
+                  <label for="email">Email address</label>
+                  <input type="email" name="email" class="form-control" id="email" placeholder="Email">
+                </div>
+                <div class="form-group">
+                    <label for="mobile">Mobile No.</label>
+                    <input type="text" class="form-control" name="mobile" id="mobile" placeholder="Mobile No.">
+                  </div>
+                <div class="form-group">
+                  <label>File upload</label>
+                  <div class="input-group col-xs-12">
+                    <input type="file" accept="image/*" class="form-control file-upload-info" name="file[]" multiple placeholder="Upload Images">
+                  </div>
+                </div>
+                <button type="submit" class="btn btn-gradient-primary mr-2">Submit</button>
+                <button class="btn btn-light">Cancel</button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+
+  </div>
+</div>
+<!-- Modal -->
+<div id="addcourse" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+  
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <h4 class="modal-title">Add Course</h4>
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+        </div>
+        <div class="modal-body">
+          
+          <div class="col-12 grid-margin stretch-card">
+            <div class="card">
+              <div class="card-body">
+                <h4 class="card-title">Enter Details of Course</h4>
+                <form class="forms-sample" action="addCourseBack" method="POST">
+                  <div class="form-group">
+                    <label for="courseId">Course Id.</label>
+                    <input type="text" class="form-control" name="courseId" id="courseId" placeholder="Course Id.">
+                  </div>
+                  <div class="form-group">
+                    <label for="courseName">Course Name</label>
+                    <input type="text" class="form-control" name="courseName" id="courseName" placeholder="Course Name">
+                  </div>
+                  <button type="submit" class="btn btn-gradient-primary mr-2">Submit</button>
+                  <button class="btn btn-light">Cancel</button>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+  
+    </div>
+  </div>
+  <!-- Modal -->
+  <div id="addstudentincourse" class="modal fade" role="dialog">
+      <div class="modal-dialog">
+    
+        <!-- Modal content-->
+        <div class="modal-content">
+          <div class="modal-header">
+            <h4 class="modal-title">Add Student in Course</h4>
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+          </div>
+          <div class="modal-body">
+            
+            <div class="col-12 grid-margin stretch-card">
+              <div class="card">
+                <div class="card-body">
+                  <h4 class="card-title">Enter Details</h4>
+                  <form class="forms-sample" action="addStudentCourseBack" method="POST">
+                      <div class="form-group">
+                          <label for="enrollmentNo">Student Id.</label>
+                          <select class="form-control" id="enrollmentNo" name="enrollmentNo">
+                              <option>Student Id.</option>
+                              {% for id in ids %}
+                                <option value="{{id}}">{{id}}</option>
+                              {% endfor %}
+                          </select>
+                        </div>
+                    <div class="form-group">
+                      <label for="courseId">Select Course</label>
+                      <select class="form-control" id="courseId" name="courseId">
+                          <option>Select Course</option>
+                          {% for course in courses %}
+                            <option value="{{course}}">{{course}}</option>
+                          {% endfor %}
+                      </select>
+                    </div>
+                    <button type="submit" class="btn btn-gradient-primary mr-2">Submit</button>
+                    <button class="btn btn-light">Cancel</button>
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          </div>
+        </div>
+    
+      </div>
+    </div>
+<!-- Modal -->
+<div id="processvideo" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+  
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <h4 class="modal-title">Take Attendence by Video</h4>
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+        </div>
+        <div class="modal-body">
+          
+          <div class="col-12 grid-margin stretch-card">
+            <div class="card">
+              <div class="card-body">
+                <h4 class="card-title">Enter Details</h4>
+                <form class="forms-sample" action="/processVideo" method="POST" enctype="multipart/form-data">
+                  <div class="form-group">
+                    <label for="date">Date</label>
+                    <input type="date" class="form-control" name="date" id="date" placeholder="Date">
+                  </div>
+                  <div class="form-group">
+                      <label for="selectcourse">Select Course</label>
+                      <select class="form-control" id="selectcourse" name="courseId">
+                          <option>Select Course</option>
+                          {% for course in courses %}
+                            <option value="{{course}}">{{course}}</option>
+                          {% endfor %}
+                      </select>
+                    </div>
+                  <div class="form-group">
+                    <label>Video upload</label>
+                    <div class="input-group col-xs-12">
+                      <input type="file" name="file" accept="video/*" class="form-control file-upload-info" placeholder="Upload Video">
+                    </div>
+                  </div>
+                  <button type="submit" class="btn btn-gradient-primary mr-2">Submit</button>
+                  <button class="btn btn-light">Cancel</button>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+  
+    </div>
+  </div>
+<!-- Modal -->
+<div id="processimage" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+  
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <h4 class="modal-title">Take Attendence by Image</h4>
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+        </div>
+        <div class="modal-body">
+          
+          <div class="col-12 grid-margin stretch-card">
+            <div class="card">
+              <div class="card-body">
+                <h4 class="card-title">Enter Details</h4>
+                <form class="forms-sample" action="/processImage" method="POST" enctype="multipart/form-data">
+                  <div class="form-group">
+                    <label for="date">Date</label>
+                    <input type="date" class="form-control" name="date" id="date" placeholder="Date">
+                  </div>
+                  <div class="form-group">
+                    <label for="selectcourse">Select Course</label>
+                    <select class="form-control" id="selectcourse" name="courseId">
+                        <option>Select Course</option>
+                        {% for course in courses %}
+                          <option value="{{course}}">{{course}}</option>
+                        {% endfor %}
+                    </select>
+                  </div>
+                  <div class="form-group">
+                    <label>Image upload</label>
+                    <div class="input-group col-xs-12">
+                      <input type="file" name="file" accept="image/*" class="form-control file-upload-info" placeholder="Upload Image">
+                    </div>
+                  </div>
+                  <button type="submit" class="btn btn-gradient-primary mr-2">Submit</button>
+                  <button class="btn btn-light">Cancel</button>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+  
+    </div>
+  </div>
+  <script>
+    function changephoto(x,y) {
+      console.log(x);
+      console.log(y);
+      document.getElementById('uploadphoto').src = y.srcElement.files[0].webkitRelativePath;
+      console.log(y.srcElement.files[0].webkitRelativePath)
+    }
+  </script>
